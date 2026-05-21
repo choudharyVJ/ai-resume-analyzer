@@ -405,7 +405,9 @@ ${response.missing_skills?.join(', ')}
 
             rounded-2xl
 
-            bg-black
+            bg-gradient-to-r
+            from-emerald-500
+            to-green-500
 
             text-white
 

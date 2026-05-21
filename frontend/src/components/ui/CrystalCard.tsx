@@ -22,13 +22,13 @@ export default function CrystalCard({
         rounded-[40px]
 
         border
-        border-white/40
+        border-green-100/60
 
         bg-white/35
 
         backdrop-blur-3xl
 
-        shadow-[0_20px_80px_rgba(0,0,0,0.08)]
+        shadow-[0_20px_80px_rgba(80,180,120,0.12)]
 
         p-14
       "
@@ -46,14 +46,14 @@ export default function CrystalCard({
           h-40
 
           bg-gradient-to-b
-          from-white/60
+          from-green-100/40
           to-transparent
 
           pointer-events-none
         "
       />
 
-      {/* Left Reflection */}
+      {/* Left Glow */}
       <div
         className="
           absolute
@@ -66,7 +66,7 @@ export default function CrystalCard({
 
           rounded-full
 
-          bg-white/20
+          bg-green-200/20
 
           blur-3xl
 
@@ -74,7 +74,7 @@ export default function CrystalCard({
         "
       />
 
-      {/* Right Reflection */}
+      {/* Right Glow */}
       <div
         className="
           absolute
@@ -87,7 +87,7 @@ export default function CrystalCard({
 
           rounded-full
 
-          bg-slate-200/30
+          bg-emerald-200/30
 
           blur-3xl
 

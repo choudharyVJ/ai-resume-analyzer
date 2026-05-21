@@ -62,10 +62,10 @@ export default function SkillsSection({
 
                   rounded-2xl
 
-                  bg-white/70
+                  bg-emerald-50
 
                   border
-                  border-white/50
+                  border-emerald-100
 
                   backdrop-blur-2xl
 

@@ -83,7 +83,7 @@ export default function AnalyzingLoader() {
 
             rounded-full
 
-            bg-black
+            bg-emerald-500
 
             animate-pulse
           "

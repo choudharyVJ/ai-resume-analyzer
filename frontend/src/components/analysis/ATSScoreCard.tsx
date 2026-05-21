@@ -61,7 +61,7 @@ export default function ATSScoreCard({
             rounded-full
 
             border-[12px]
-            border-black/90
+            border-emerald-500
           "
           style={{
             clipPath: `polygon(
