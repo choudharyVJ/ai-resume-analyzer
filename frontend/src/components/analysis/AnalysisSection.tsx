@@ -40,15 +40,7 @@ export default function AnalysisSection({
 
       content:
         analysis.recommended_roles,
-    },
-
-    {
-      title:
-        'Recruiter Verdict',
-
-      content:
-        analysis.recruiter_verdict,
-    },
+    }
   ];
 
   return (
