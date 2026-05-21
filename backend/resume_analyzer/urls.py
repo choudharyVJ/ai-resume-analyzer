@@ -6,6 +6,7 @@ urlpatterns = [
 
     path(
         'upload/',
-        upload_resume
+        upload_resume,
+        name='upload_resume'
     ),
 ]
