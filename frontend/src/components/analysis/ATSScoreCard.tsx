@@ -1,12 +1,23 @@
 interface Props {
+
   score: number;
 }
 
 export default function ATSScoreCard({
+
   score,
+
 }: Props) {
 
-  const percentage = `${score}%`;
+  const radius = 90;
+
+  const circumference =
+    2 * Math.PI * radius;
+
+  const offset =
+    circumference -
+    (score / 100) *
+      circumference;
 
   return (
 
@@ -21,7 +32,8 @@ export default function ATSScoreCard({
 
         backdrop-blur-3xl
 
-        p-10
+        p-6
+        md:p-10
 
         shadow-[0_10px_40px_rgba(0,0,0,0.06)]
 
@@ -36,65 +48,96 @@ export default function ATSScoreCard({
         className="
           relative
 
-          w-52
-          h-52
-
-          rounded-full
+          w-64
+          h-64
 
           flex
           items-center
           justify-center
-
-          bg-gradient-to-br
-          from-white
-          to-slate-100
-
-          shadow-inner
         "
       >
 
-        <div
+        <svg
           className="
             absolute
-            inset-4
+            inset-0
 
-            rounded-full
-
-            border-[12px]
-            border-emerald-500
+            -rotate-90
           "
-          style={{
-            clipPath: `polygon(
-              0 0,
-              ${percentage} 0,
-              ${percentage} 100%,
-              0 100%
-            )`,
-          }}
-        />
+          viewBox="0 0 220 220"
+        >
+
+          {/* Background */}
+
+          <circle
+            cx="110"
+            cy="110"
+            r={radius}
+
+            stroke="#d1fae5"
+
+            strokeWidth="16"
+
+            fill="transparent"
+          />
+
+          {/* Progress */}
+
+          <circle
+            cx="110"
+            cy="110"
+            r={radius}
+
+            stroke="#10b981"
+
+            strokeWidth="16"
+
+            fill="transparent"
+
+            strokeLinecap="round"
+
+            strokeDasharray={
+              circumference
+            }
+
+            strokeDashoffset={
+              offset
+            }
+
+            className="
+              transition-all
+              duration-1000
+            "
+          />
+
+        </svg>
+
+        {/* Inner Circle */}
 
         <div
           className="
-            w-36
-            h-36
+            w-40
+            h-40
 
             rounded-full
 
-            bg-white
+            bg-white/80
+
+            backdrop-blur-xl
 
             flex
             flex-col
             items-center
             justify-center
 
-            shadow-lg
+            shadow-xl
           "
         >
 
           <h2
             className="
               text-5xl
-              font-semibold
+              font-bold
 
               text-gray-900
             "
@@ -106,9 +149,9 @@ export default function ATSScoreCard({
 
           <p
             className="
-              text-sm
+              text-xs
 
-              tracking-[0.3em]
+              tracking-[0.35em]
 
               text-gray-500
 

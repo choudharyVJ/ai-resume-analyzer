@@ -23,6 +23,7 @@ def upload_resume(request):
         if not pdf_file:
 
             return Response({
+
                 'error': 'No PDF uploaded'
             })
 
@@ -42,19 +43,44 @@ def upload_resume(request):
                     page_text + '\n'
                 )
 
-                ats_score = calculate_ats_score(
-                    extracted_text
-                )
+        # ATS SCORE
+
+        score_data = calculate_ats_score(
+            extracted_text
+        )
+
+        ats_score = score_data["score"]
+
+        detected_role = score_data[
+            "detected_role"
+        ]
+
+        # AI ANALYSIS
 
         analysis = analyze_resume(
-            extracted_text,
-            calculate_ats_score
-                                )
 
-        return Response(analysis)
+            extracted_text,
+
+            ats_score
+        )
+
+        # APPEND DYNAMIC DATA
+
+        analysis["ats_score"] = (
+            ats_score
+        )
+
+        analysis["detected_role"] = (
+            detected_role
+        )
+
+        return Response(
+            analysis
+        )
 
     except Exception as error:
 
         return Response({
+
             'error': str(error)
         })
