@@ -133,3 +133,8 @@ STATIC_ROOT = os.path.join(
     BASE_DIR,
     'staticfiles'
 )
+
+CORS_ALLOWED_ORIGINS = [
+
+    'https://ai-resume-analyzer-2026.vercel.app',
+]
