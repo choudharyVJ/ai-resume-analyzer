@@ -8,6 +8,9 @@ from pypdf import PdfReader  # type: ignore
 
 from .services import analyze_resume
 
+from .ats_score import calculate_ats_score
+from backend.resume_analyzer import ats_score
+
 
 @api_view(['POST'])
 def upload_resume(request):
@@ -40,9 +43,14 @@ def upload_resume(request):
                     page_text + '\n'
                 )
 
+                ats_score = calculate_ats_score(
+                    extracted_text
+                )
+
         analysis = analyze_resume(
-            extracted_text
-        )
+            extracted_text,
+            calculate_ats_score
+                                )
 
         return Response(analysis)
 

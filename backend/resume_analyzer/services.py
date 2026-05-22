@@ -11,7 +11,10 @@ client = Groq(
 )
 
 
-def analyze_resume(resume_text):
+def analyze_resume(
+    resume_text,
+    ats_score
+):
 
     prompt = f"""
 You are an elite AI resume analyzer.
@@ -25,7 +28,7 @@ Required JSON format:
 
 {{
   "professional_summary": "",
-  "ats_score": 0,
+  "ats_score": {ats_score},
   "skills": [],
   "strengths": [],
   "weaknesses": [],
@@ -48,6 +51,22 @@ Rules:
 
 Resume:
 {resume_text}
+
+Use this ATS score as grounding:
+
+ATS Score:
+{ats_score}
+
+Do not randomly generate ATS scores.
+
+Only slightly adjust score if absolutely necessary after analysis.
+
+The score must realistically reflect:
+- skills
+- projects
+- experience
+- resume depth
+- technical quality
 """
 
     response = (

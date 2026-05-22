@@ -116,11 +116,23 @@ ${response.recommended_roles?.join(', ')}
 Recruiter Verdict:
 ${response.recruiter_verdict}
 
+${
+  response.job_match_score
+    ? `
 Job Match Score:
 ${response.job_match_score}
+`
+    : ''
+}
 
+${
+  response.missing_skills?.length
+    ? `
 Missing Skills:
-${response.missing_skills?.join(', ')}
+${response.missing_skills.join(', ')}
+`
+    : ''
+}
 `;
 
     const lines =
