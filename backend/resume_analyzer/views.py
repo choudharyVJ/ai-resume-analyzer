@@ -9,7 +9,6 @@ from pypdf import PdfReader  # type: ignore
 from .services import analyze_resume
 
 from .ats_score import calculate_ats_score
-from backend.resume_analyzer import ats_score
 
 
 @api_view(['POST'])
