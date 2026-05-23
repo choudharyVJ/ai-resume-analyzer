@@ -260,24 +260,49 @@ def analyze_resume(
 
     response = (
 
-        client.chat.completions.create(
+    client.chat.completions.create(
 
-            model='llama-3.1-8b-instant',
+        model='llama-3.1-8b-instant',
 
-            messages=[
+        messages=[
 
-                {
-                    'role': 'user',
+            {
+                'role': 'system',
 
-                    'content': prompt,
-                }
-            ],
+                'content': '''
 
-            temperature=0,
+You are a strict JSON API.
 
-            max_tokens=1200,
-        )
+You ONLY return valid raw JSON.
+
+Do NOT return markdown.
+
+Do NOT return explanations.
+
+Do NOT wrap JSON in code blocks.
+
+Do NOT write any text before or after JSON.
+
+Return ONLY parseable JSON.
+'''
+            },
+
+            {
+                'role': 'user',
+
+                'content': prompt,
+            }
+        ],
+
+        temperature=0,
+
+        max_tokens=1200,
+
+        response_format={
+            "type": "json_object"
+        }
     )
+)
 
     content = (
 
@@ -287,4 +312,34 @@ def analyze_resume(
         .content
     )
 
-    return json.loads(content)
+    try:
+        return json.loads(content)
+
+    except Exception:
+        return {
+            "professional_summary":
+                "AI analysis failed.",
+
+            "ats_score":
+                ats_score,
+
+            "detected_role":
+                detected_role,
+
+            "skills": [],
+
+            "strengths": [],
+
+            "weaknesses": [],
+
+            "improvement_suggestions": [],
+
+            "recommended_roles": [],
+
+            "recruiter_verdict":
+                "Unable to generate recruiter verdict.",
+
+            "score_breakdown": [
+                "- AI response formatting issue"
+            ]
+        }
