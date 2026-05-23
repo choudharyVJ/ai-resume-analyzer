@@ -45,10 +45,13 @@ export default function UploadSection() {
       file
     );
 
-    formData.append(
-      'job_description',
-      jobDescription
-    );
+  if (jobDescription) {
+
+  formData.append(
+    'job_description',
+    jobDescription
+  );
+}
 
     try {
 
@@ -214,105 +217,260 @@ ${response.missing_skills.join(', ')}
 
         </p>
 
-        <div
+        {/* Desktop Upload */}
+
+<div
+  className="
+    hidden
+    md:flex
+
+    items-center
+    justify-center
+    flex-col
+  "
+>
+
+  <label
+    className="
+      cursor-pointer
+
+      w-72
+      h-72
+
+      rounded-[42px]
+
+      bg-white/70
+
+      backdrop-blur-2xl
+
+      border
+      border-white/60
+
+      shadow-[0_10px_40px_rgba(0,0,0,0.08)]
+
+      flex
+      flex-col
+      items-center
+      justify-center
+
+      text-center
+
+      hover:scale-[1.02]
+
+      transition
+      duration-300
+    "
+  >
+
+    <span
+      className="
+        text-4xl
+
+        font-medium
+
+        text-gray-700
+
+        leading-relaxed
+      "
+    >
+
+      Choose
+      <br />
+      Resume PDF
+
+    </span>
+
+    <input
+      type="file"
+
+      accept=".pdf"
+
+      className="hidden"
+
+      onChange={(event) => {
+
+        if (
+          event.target.files
+        ) {
+
+          setFile(
+            event.target.files[0]
+          );
+        }
+      }}
+    />
+
+  </label>
+
+  {
+    file && (
+
+      <div
+        className="
+          mt-6
+
+          max-w-[500px]
+
+          text-center
+        "
+      >
+
+        <p
           className="
-            border
-            border-gray-200
+            text-gray-600
 
-            bg-white/80
+            leading-7
 
-            rounded-[32px]
-
-            p-16
-
-            shadow-inner
-
-            text-center
+            break-words
           "
         >
 
-          <label
-            className="
-              cursor-pointer
+          <span className="font-semibold">
 
-              inline-flex
-              items-center
-              justify-center
+            Selected:
 
-              px-8
-              py-4
+          </span>
 
-              rounded-2xl
+          {' '}
 
-              bg-white
+          {file.name}
 
-              shadow-lg
+        </p>
 
-              border
-              border-gray-200
+      </div>
+    )
+  }
 
-              hover:scale-[1.02]
+</div>
 
-              transition
-              duration-300
-            "
-          >
+{/* Mobile Upload */}
 
-            <span
-              className="
-                text-gray-700
-                font-medium
-              "
-            >
+<div
+  className="
+    flex
+    md:hidden
 
-              Choose Resume PDF
+    items-center
+    justify-center
+    flex-col
+  "
+>
 
-            </span>
+  <label
+    className="
+      cursor-pointer
 
-            <input
-              type="file"
+      w-52
+      h-52
 
-              accept=".pdf"
+      rounded-[32px]
 
-              className="hidden"
+      bg-white/80
 
-              onChange={(event) => {
+      backdrop-blur-xl
 
-                if (
-                  event.target.files
-                ) {
+      border
+      border-white/60
 
-                  setFile(
-                    event.target.files[0]
-                  );
-                }
-              }}
-            />
+      shadow-[0_8px_30px_rgba(0,0,0,0.08)]
 
-          </label>
+      flex
+      flex-col
+      items-center
+      justify-center
 
-          {
-            file && (
+      text-center
 
-              <p
-                className="
-                  mt-6
+      px-4
+    "
+  >
 
-                  text-gray-500
+    <span
+      className="
+        text-2xl
 
-                  text-sm
-                "
-              >
+        font-medium
 
-                Selected:
-                {' '}
-                {file.name}
+        text-gray-700
 
-              </p>
-            )
-          }
+        leading-snug
+      "
+    >
 
-        </div>
+      Choose
+      <br />
+      Resume
+      <br />
+      PDF
+
+    </span>
+
+    <input
+      type="file"
+
+      accept=".pdf"
+
+      className="hidden"
+
+      onChange={(event) => {
+
+        if (
+          event.target.files
+        ) {
+
+          setFile(
+            event.target.files[0]
+          );
+        }
+      }}
+    />
+
+  </label>
+
+  {
+    file && (
+
+      <div
+        className="
+          mt-5
+
+          px-4
+
+          max-w-full
+
+          text-center
+        "
+      >
+
+        <p
+          className="
+            text-white
+
+            text-sm
+
+            break-words
+
+            leading-7
+          "
+        >
+
+          <span className="font-semibold">
+
+            Selected:
+
+          </span>
+
+          {' '}
+
+          {file.name}
+
+        </p>
+
+      </div>
+    )
+  }
+
+</div>
 
         <button
 

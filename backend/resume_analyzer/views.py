@@ -20,6 +20,11 @@ def upload_resume(request):
             'resume'
         )
 
+        job_description = request.data.get(
+        'job_description',
+        ''
+        )
+
         if not pdf_file:
 
             return Response({
@@ -59,10 +64,14 @@ def upload_resume(request):
 
         analysis = analyze_resume(
 
-            extracted_text,
+    extracted_text,
 
-            ats_score
-        )
+    ats_score,
+
+    detected_role,
+
+    job_description
+)
 
         # APPEND DYNAMIC DATA
 
