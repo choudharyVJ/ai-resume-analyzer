@@ -1,9 +1,12 @@
 interface Props {
+
   verdict: string;
 }
 
 export default function RecruiterVerdictCard({
+
   verdict,
+
 }: Props) {
 
   const lowerVerdict =
@@ -23,14 +26,15 @@ export default function RecruiterVerdictCard({
     'NEEDS IMPROVEMENT';
 
   let badgeColor =
-    'bg-red-500/90';
+    'bg-red-500';
 
   if (isStrongHire) {
 
-    badgeText = 'STRONG HIRE';
+    badgeText =
+      'STRONG HIRE';
 
     badgeColor =
-      'bg-green-500/90';
+      'bg-emerald-500';
   }
 
   else if (isModerate) {
@@ -39,7 +43,7 @@ export default function RecruiterVerdictCard({
       'MODERATE HIRE';
 
     badgeColor =
-      'bg-yellow-500/90';
+      'bg-yellow-500';
   }
 
   return (
@@ -48,30 +52,35 @@ export default function RecruiterVerdictCard({
       className="
         mt-12
 
-        rounded-[32px]
+        rounded-[36px]
 
         border
-        border-white/40
+        border-emerald-200/60
 
-        bg-white/40
+        bg-gradient-to-br
+        from-emerald-100
+        via-white
+        to-green-50
 
         backdrop-blur-3xl
 
-        p-10
+        p-6
+        md:p-10
 
-        shadow-[0_10px_40px_rgba(0,0,0,0.06)]
+        shadow-[0_10px_50px_rgba(16,185,129,0.15)]
       "
     >
 
       <div
         className="
           flex
-          items-center
+          items-start
           justify-between
 
           gap-6
 
-          flex-wrap
+          flex-col
+          md:flex-row
         "
       >
 
@@ -79,28 +88,35 @@ export default function RecruiterVerdictCard({
 
           <p
             className="
-              text-gray-500
+              text-emerald-700
 
-              text-sm
+              text-xs
+              md:text-sm
 
-              tracking-[0.3em]
+              tracking-[0.35em]
 
               uppercase
 
-              mb-3
+              font-medium
+
+              mb-4
             "
           >
 
-            Recruiter Verdict
+            AI Resume Evaluation
 
           </p>
 
           <h2
             className="
-              text-4xl
+              text-3xl
+              md:text-5xl
+
               font-semibold
 
               text-gray-900
+
+              leading-tight
             "
           >
 
@@ -111,19 +127,28 @@ export default function RecruiterVerdictCard({
         </div>
 
         <div
-          className={`
-            ${badgeColor}
+          className="
+            inline-flex
+            items-center
 
-            px-6
-            py-3
+            gap-2
 
-            rounded-2xl
+            rounded-full
+
+            bg-emerald-500
+
+            px-5
+            py-2.5
+
+            text-sm
+            font-medium
+
+            tracking-wide
 
             text-white
-            font-semibold
 
             shadow-lg
-          `}
+          "
         >
 
           AI Evaluated
@@ -131,6 +156,18 @@ export default function RecruiterVerdictCard({
         </div>
 
       </div>
+
+      <div
+        className="
+          mt-8
+
+          h-[1px]
+
+          bg-gradient-to-r
+          from-emerald-200
+          to-transparent
+        "
+      />
 
       <p
         className="
@@ -140,7 +177,10 @@ export default function RecruiterVerdictCard({
 
           leading-8
 
-          text-lg
+          text-base
+          md:text-lg
+
+          max-w-4xl
         "
       >
 

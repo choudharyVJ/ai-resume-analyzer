@@ -3,37 +3,31 @@ interface Props {
 }
 
 export default function AnalysisSection({ analysis }: Props) {
-  const sections = [
-    {
-      title: "Professional Summary",
+const sections = [
 
-      content: analysis.professional_summary,
-    },
+  {
+    title: "Professional Summary",
 
-    {
-      title: "Strengths",
+    content:
+      analysis.professional_summary,
+  },
 
-      content: analysis.strengths,
-    },
+  {
+    title:
+      "Improvement Suggestions",
 
-    {
-      title: "Weaknesses",
+    content:
+      analysis.improvement_suggestions,
+  },
 
-      content: analysis.weaknesses,
-    },
+  {
+    title:
+      "Recommended Roles",
 
-    {
-      title: "Improvement Suggestions",
-
-      content: analysis.improvement_suggestions,
-    },
-
-    {
-      title: "Recommended Roles",
-
-      content: analysis.recommended_roles,
-    },
-  ];
+    content:
+      analysis.recommended_roles,
+  },
+];
 
   return (
     <div
@@ -45,58 +39,6 @@ export default function AnalysisSection({ analysis }: Props) {
         gap-6
       "
     >
-      {/* Recruiter Verdict */}
-
-      {analysis.recruiter_verdict && (
-        <div
-          className="
-              rounded-[32px]
-
-              border
-              border-emerald-200
-
-              bg-gradient-to-br
-              from-emerald-50
-              to-white
-
-              p-6
-              md:p-8
-
-              shadow-[0_10px_40px_rgba(0,0,0,0.06)]
-            "
-        >
-          <p
-            className="
-                text-sm
-
-                tracking-[0.3em]
-
-                uppercase
-
-                text-emerald-600
-
-                mb-4
-              "
-          >
-            Recruiter Verdict
-          </p>
-
-          <h2
-            className="
-                text-2xl
-                md:text-3xl
-
-                font-semibold
-
-                text-gray-900
-
-                leading-relaxed
-              "
-          >
-            {analysis.recruiter_verdict}
-          </h2>
-        </div>
-      )}
 
       {/* Detected Role */}
 

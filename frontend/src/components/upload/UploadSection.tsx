@@ -317,12 +317,15 @@ ${response.missing_skills.join(', ')}
 
         <p
           className="
-            text-gray-600
+  text-gray-200
 
-            leading-7
+  leading-7
 
-            break-words
-          "
+  break-words
+
+  text-sm
+  md:text-base
+"
         >
 
           <span className="font-semibold">
@@ -443,15 +446,16 @@ ${response.missing_skills.join(', ')}
       >
 
         <p
-          className="
-            text-white
+         className="
+  text-gray-200
 
-            text-sm
+  leading-7
 
-            break-words
+  break-words
 
-            leading-7
-          "
+  text-sm
+  md:text-base
+"
         >
 
           <span className="font-semibold">
@@ -483,7 +487,7 @@ ${response.missing_skills.join(', ')}
   className="
     mt-8
 
-    text-gray-700
+    text-gray-200
 
     font-medium
 
