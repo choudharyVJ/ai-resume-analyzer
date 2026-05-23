@@ -12,11 +12,25 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
 DEBUG = os.getenv("DEBUG") == "True"
+
+
+
+STATIC_ROOT = os.path.join(
+    BASE_DIR,
+    'staticfiles'
+)
+
+CORS_ALLOWED_ORIGINS = [
+
+    'https://ai-resume-analyzer-2026.vercel.app',
+]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -132,14 +146,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = True
 
-import os
 
-STATIC_ROOT = os.path.join(
-    BASE_DIR,
-    'staticfiles'
-)
-
-CORS_ALLOWED_ORIGINS = [
-
-    'https://ai-resume-analyzer-2026.vercel.app',
-]
